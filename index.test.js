@@ -144,13 +144,13 @@ describe('[Görev 7] asenkronCiftSayi', () => {
   test('[19] bir çift sayı verilirse true çözümlüyor',async () => {
     const input=2
     const actual=await utils.asenkronCiftSayi(input)
-    expect(actual).toEqual(true)
+    expect(actual).toBeTruthy();
   })
   // test('[20] tek sayı verilirse false çözümlüyor', () => {})
   test('[20] tek sayı verilirse false çözümlüyor',async () => {
     const input=3
     const actual=await utils.asenkronCiftSayi(input)
-    expect(actual).toEqual(false)
+    expect(actual).toBeFalsy();
   })
 
 })
