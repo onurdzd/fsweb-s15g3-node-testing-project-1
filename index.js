@@ -50,7 +50,7 @@ function Sayici(ilkSayi) {
    */
 
   // ✨ gerekli propları ekleyin
-  this.ilkSayi = ilkSayi + 1;
+  let tempSayi = ilkSayi;
   /**
    * [Görev 4B] asagiSay metodu sıfıra doğru sayar
    * @returns {number} - bir sonraki sayı, sıfırdan küçük olamaz
@@ -65,9 +65,7 @@ function Sayici(ilkSayi) {
    */
   this.asagiSay = () => {
     // ✨ kodlar buraya
-    if (this.ilkSayi > 0) {
-      this.ilkSayi -= 1;
-    }
+    return tempSayi == 0 ? 0 :tempSayi--;
   };
 }
 
@@ -77,7 +75,8 @@ function Mevsimler() {
    */
 
   // ✨ gerekli propları ekleyin
-  this.mevsimler = ["yaz", "sonbahar", "kış", "ilkbahar"];
+  const mevsimler = ["ilkbahar","yaz","sonbahar","kış"];
+  let currentIndex = 0;
   /**
    * [Görev 5B] sonraki metodu bir sonraki mevsimi gösterir
    * @returns {string} - bir sonraki mevsim "yaz" olarak yüklenir
@@ -90,25 +89,10 @@ function Mevsimler() {
    * mevsimler.sonraki() // "ilkbahar" döndürür
    * mevsimler.sonraki() // "yaz" döndürür
    */
-  this.sonraki = (sayi) => {
+  this.sonraki = () => {
     // ✨ kodlar buraya
-    if (!sayi) {
-      return this.mevsimler[0];
-    } else if (sayi < 5) {
-      return this.mevsimler[sayi - 1];
-    } else if (sayi > 4) {
-      return this.mevsimler[
-        sayi % 4 === 0
-          ? 3
-          : sayi % 4 === 1
-          ? 0
-          : sayi % 4 === 2
-          ? 1
-          : sayi % 4 === 3
-          ? 2
-          : null
-      ];
-    }
+    currentIndex = (currentIndex+1) % mevsimler.length;
+    return mevsimler[currentIndex];
   };
 }
 
@@ -191,19 +175,9 @@ function Araba(isim, depo, kml) {
  */
  function asenkronCiftSayi(sayi) {
   // ✨ implement
-  let kalan;
-
-  if(sayi>1 || sayi<-1){
-    kalan = sayi%2
-  }else{
-    kalan=1
-  }
-
-  if (kalan === 1) {
-    return false;
-  } else {
-    return true;
-  }
+  return new Promise(res=>{
+    res(sayi % 2 == 0)
+  });
 }
 
 module.exports = {
